@@ -1,3 +1,6 @@
+import argparse
+import os
+
 def parse_user_input():
     parser = argparse.ArgumentParser(
         description='WGS data preprocessing pipeline'
@@ -11,7 +14,7 @@ def parse_user_input():
     #     required=True, type=str
     # )
     parser.add_argument('-o','--out',
-        help='Folder for preprocessing out files,
+        help='Folder for preprocessing out files',
         required=True, type=str
     )
     parser.add_argument('-r', '--ref',
@@ -45,10 +48,11 @@ def main():
     out_dir = args.out
     threads = args.threads
     sv_out_dir = out_dir + "/sv_out"
+    sv_scripts = "scripts/esv_pipe/scripts"
     complex_out_dir = out_dir + "/complex_out"
 
     # sv pipeline
-    os.system("scripts/esv_pipe/main.sh {} {} {} {} {}".format(bam_file, ref, sv_out_dir, threads, sample_nmae))
+    os.system("scripts/esv_pipe/main.sh {} {} {} {} {} {}".format(bam_file, ref, sv_out_dir, threads, sample_nmae, sv_scripts))
 
     # complex regions pipeline
     os.system("scripts/complex/extract_complex_reads.sh {} {} {} {}".format(sample_nmae, ref, complex_out_dir, region_file))
