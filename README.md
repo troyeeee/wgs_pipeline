@@ -19,3 +19,19 @@
 
 `python main.py --help`
 
+## Note:
+lumpy注意事项：
+1. python 2.7 or newer, must have pysam, numpy installed.
+2. conda 安装lumpy后需要修改
+`anaconda3/envs/py27/bin/lumpyexpress`文件里的 524行， 在后面添加 `-e` 参数。
+![image info](lumpy.png)
+3. 然后lumpy 环境需要看这个配置文件, `anaconda3/envs/py27/bin/lumpyexpress.config`, 修改这个配置文件或者local环境变量。
+
+svtyper:
+1. Python 2.7 or newer
+
+mantaSv:
+1. Pyhton 2.7-2.9
+
+
+ 
